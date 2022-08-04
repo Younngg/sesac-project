@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# 새싹 프론트엔드 과정 실무 프로젝트 4조
+## expert chemiverse 
+- 기업에서 보내주신 기획안으로, 기획안에 포함되지 않은 내용은 생략하여 구현하였습니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 사이트 설명
+Chemiverse : 케미버스는 기업에 입사한 신입사원의 안정적 온보딩을 지원하는 온라인 온보딩 플랫폼입니다.
+  1. Connect With : 기업에 합격하고, 입사하기 전 connect with 페이지에서 기업에 대한 기본 정보와 동기 간 네트워킹을 형성하게 됩니다.
+  2. On & Up : 입사 후 사번을 받게 되면 On & Up 페이지로 이동이 가능하게 됩니다. 신입사원 교육과 연계되어 온라인 플랫폼으로써 활용됩니다. 
 
-## Available Scripts
 
-In the project directory, you can run:
+### Project Schedule 
+- week 1 ~ week 2 : 협업을 위한 깃허브 레파지토리 생성, 기획안을 바탕으로 역할 및 페이지 구분, 페이지 뼈대 구현
+- week 2 ~ week 4 : 디자인 구성, 기능 확인 및 route 연결, 팀원 별 각자 페이지 마크업 및 기능 구현, 오류 확인 및 수정
+- week 3 ~ week 4 : 반응형 페이지 구현, netlify 이용하여 페이지 배포
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 개발 환경 및 개발 도구
+|구분|이름|설명|
+|:---:|---|---|
+|협업|노션|회의록 작성 및 task list 공유|
+||깃허브||
+|디자인|Figma||
+|개발|리액트||
+||scss||
+|라이브러리|React-Responsive|Connect With 메인 반응형 구현|
+||React-Modal|로그인 모달 구현|
+||CKeditor|게시판 글쓰기 창 구현|
+||Fullcalendar|교육 안내 캘린더 구현|
+||Tippy.js|교육 안내 캘린더 일정에 hover시 말풍선 구현|
+||Rechart|진단 차트 구현|
+||React Slick|역량학습 슬라이더 구현|
+||React Youtube|역량학습 유투브 영상|
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 역할
+|이름|역할 및 구현한 기능|
+|:---:|---|
+|조윤주|조장, 경로 구성, 교육안내 페이지|
+|김지현(95)|디자인, 발표 PPT제작, 교육장 이동, 진단 페이지|
+|김지현(97)|디자인, 로그인, 회사소개, 입사 전 준비사항 페이지, header|
+|정지영|노션 관리 및 회의록 작성, 배포, 전체 게시판, on&up 메인 모바일 반응형, 환영인사, footer|
+|조예진|Git 관리, on&up 메인, 케미스토리, 멘토링, 작성하기 페이지|
+|황선환|노션 관리 및 회의록 작성, Connect with 메인, 역량학습 페이지|
 
-### `npm test`
+### 주요 기능
+**로그인**
+1. 로그인 해야만 on&up 페이지 사용 가능하도록 구현
+  - on&up 이동 버튼 클릭 시 로그인창 표출
+  - auth 값이 false일 경우 login페이지로 redirect 되도록 설정
+  - redirect 컴포넌트 생성 후 메인 페이지 경로와 동일하게 설정
+2. useState, 삼항연산자 사용하여 ID와 PW가 모두 일치하는 경우에는 메인 페이지로 이동, 일치하지 않는 경우에는 메세지 표출
+3. 로그인 완료시 헤더 오른쪽 상단 '마이페이지 로그아웃'으로 변경됨.
+  - auth값에 따라 로그인 상태 변경
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**ID 찾기 / 비밀번호 변경**
+1. 사용자 정보가 맞지 않는 경우 메시지 표출, 사용자 정보 일치시 입력한 번호로 아이디가 전송되었다는 알림창 표출
+2. 비밀번호 변경 클릭시 onClick이벤트 사용하여 모달창 나타남
 
-### `npm run build`
+**교육장 이동**
+1. 강의 정보 data 파일 생성, map 사용하여 플랫폼 별 강의 정보 3개씩 표출
+2. useState와 clipboard.writeText , 삼항연산자 사용하여 url 공유 아이콘 클릭시 url 복사 가능
+3. setTimeOut 이용하여 일정 시간 후 복사 메시지 사라짐
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**교육안내 - 시간표**
+1. 시간표 일정 hover시 일정 제목과 기간이 툴팁으로 구현됨
+2. 날짜 선택시 해당 기간의 일정 생성 가능
+  - 생성된 일정 클릭 시 삭제 여부 확인 및 삭제 가능
+3. 오른쪽 상단 화살표 클릭시 월 단위 이동 가능
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**교육안내 - 강사 소개**
+1. 상세보기
+  - useParams 활용하여 id가 일치하는 경우 해당 강사의 데이터를 받아올 수 있도록 find 메서드 활용함
+  - 상세페이지 방문 시 동영상 자동 재생
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**진단 - 현재 상태 점검하기**
+1. 현재상태 점검하기 - 사전/사후
+  - 페이지 용도에 따라 사전, 사후 나눈 후 해당 내용 표출되도록 설정
+  - useState와 disable 사용하여 제출 후 수정 불가능하도록 제출하기 버튼 비활성화 설정
+2. 진단결과 보기
+  - 사전/ 사후 해당 페이지에 맞는 데이터파일 임의 생성 후 rechart 활용하여 그래프 생성 
 
-### `npm run eject`
+**역량학습**
+1. 각 탭 구성을 동일하게 하여 하나의 component 사용, json에서 받아온 props와 router의 useLocation을 이용하여 탭마다 다른 내용이 나오도록 구현
+2. 각 모듈 영역 hover 시 학습 목표와 더보기 버튼 표시
+3. 클릭 시 모듈 json 파일의 id값을 파라미터로 사용하여 해당 모듈의 학습페이지로 이동
+4. 상세페이지
+  - 학습 섹션 : 클릭시 콘텐츠 특성에 따라 다른 모달창 표출
+    1) 카드뉴스 모달 : slick 라이브러리 사용하여 슬라이드 구현, 화살표, 페이지네이션 클릭시 이동
+    2) 유투브 영상 모달 : 모바일의 경우 유투브로 즉시 이동
+  - 생각해보기 섹션 : 작성 내용이 없을 경우 작성 칸 / 임시저장 / 작성하기 버튼 표출, 작성 내용 있을 경우 내용과 수정 취소 / 수정 완료 버튼 표출
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**chemistory & 멘토링**
+1. 게시글 작성 후 수정하기, 수정취소, 수정완료 기능 구현
+2. Window.confirm() 활용하여 수정, 삭제 버튼 클릭 시 Id 값 이용하여 몇 번째 작성글 확인 여부 alert창 표출
+3. 작성 완료 시 작성 완료된 게시글 수 표출 (length)
+4. useState 활용하여 수정버튼 클릭 시 수정취소 및 수정완료로 버튼 상태 변경함
+  - useState의 기본값을 content로 지정하여 수정 시에 기존에 입력한 내용이 유지되어 기존내용에 이어서 수정 가능하도록 구현
+5. Window.print() 사용하여 인쇄하기 버튼 onClick시 인쇄 기능 구현
+6. UseState,삼항연산자 활용하여 일정 글자 수 미만 입력 시 경고 메시지 표출, 일정 글자 수 이상 입력해야만 작성 가능하도록 구현
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**전체 게시판**
+1. 게시글 리스트
+  - 하나의 리스트 컴포넌트를 여러 게시판에서 사용할 수 있도록 useLocation, 삼항연산자 사용
+  - 자기소개, 자유게시판, 아이디어제시 게시판에서는 좋아요 항목, 공지사항 게시판에서는 구분, 첨부파일, Q&A게시판에서는 조회수, 작성일만 나타남
+  - 답변 글은 index 번호 대신 답글 아이콘, 비밀글 설정시 제목 옆에 자물쇠 아이콘 나타나도록 구현
+  - map 함수 사용하여 등록된 게시물 내림차순으로 정렬
+  - New Data로 오늘 날짜 값 가져오고 삼항연산자 사용하여 작성일과 게시글의 날짜와 일치하면 title 옆에 new 표출
+  - filter 사용하여 important가 true로 되어있는 게시글을 importantPosts state에 저장하고, map을 사용하여 게시판 상단 필독 게시글로 표출되도록 설정
+  - 게시글에 첨부파일이 있을 경우 삼항연산자를 사용하여 첨부파일 아이콘 표출되도록 설정
+  - Pagination 구현
+2. 작성 페이지
+  - 글쓰기 화면 전환시 제목에 자동포커스 CKeditor 라이브러리 사용하여 글쓰기 구현
+  - QnA 게시판에서는 삼항연산자와 useLocation 사용하여 url에 qna가 포함되면 비공개 체크박스가 나타나도록 함
+3. 상세 페이지
+  - find 함수와 useParams 이용하여 params로 받아온 id와 일치하는 게시글을 보여주는 방식으로 구현
